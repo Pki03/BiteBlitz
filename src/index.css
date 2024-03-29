@@ -5,9 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Kanit', sans-serif;
 }
 
-code {
+code 
+{
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#carousel
+{
+  max-height: 800px;
+}
+button.custom-button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button.custom-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
