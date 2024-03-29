@@ -10,6 +10,14 @@ BiteBlitz is a food ordering website developed using the MERN (MongoDB, Express.
 - **Shopping Cart:** View and manage items in the cart before proceeding to checkout.
 - **Secure Checkout:** Enter delivery details and complete the order securely.
 - **Database Integration:** User and order data is stored in a MongoDB database.
+- ![Screenshot 2024-03-29 213723](https://github.com/Pki03/BiteBlitz/assets/115011912/3f1a76bb-a0aa-49ba-b079-d53616bc52e5)
+- ![Screenshot 2024-03-29 213757](https://github.com/Pki03/BiteBlitz/assets/115011912/80e10e4f-c1c8-45a4-a8a1-97e5de55df3c)
+- ![Screenshot 2024-03-29 213810](https://github.com/Pki03/BiteBlitz/assets/115011912/88d18376-44bf-4bce-aff3-ce842532ceab)
+- ![Screenshot 2024-03-29 213854](https://github.com/Pki03/BiteBlitz/assets/115011912/c83eac91-9294-4e26-afa2-728e01fb7fe3)
+
+
+
+
 
 ## Technologies Used
 
