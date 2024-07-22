@@ -10,10 +10,14 @@ BiteBlitz is a food ordering website developed using the MERN (MongoDB, Express.
 - **Shopping Cart:** View and manage items in the cart before proceeding to checkout.
 - **Secure Checkout:** Enter delivery details and complete the order securely.
 - **Database Integration:** User and order data is stored in a MongoDB database.
-- ![Screenshot 2024-03-29 213723](https://github.com/Pki03/BiteBlitz/assets/115011912/3f1a76bb-a0aa-49ba-b079-d53616bc52e5)
-- ![Screenshot 2024-03-29 213757](https://github.com/Pki03/BiteBlitz/assets/115011912/80e10e4f-c1c8-45a4-a8a1-97e5de55df3c)
-- ![Screenshot 2024-03-29 213810](https://github.com/Pki03/BiteBlitz/assets/115011912/88d18376-44bf-4bce-aff3-ce842532ceab)
-- ![Screenshot 2024-03-29 213854](https://github.com/Pki03/BiteBlitz/assets/115011912/c83eac91-9294-4e26-afa2-728e01fb7fe3)
+- ![Screenshot 2024-07-22 173019](https://github.com/user-attachments/assets/2e685a59-6281-4ae8-8cce-a780ba779aa7)
+- ![Screenshot 2024-07-22 173108](https://github.com/user-attachments/assets/de9255b0-c91c-4b41-bc63-6a5a4a4d7ce8)
+- ![Screenshot 2024-07-22 173131](https://github.com/user-attachments/assets/65781138-b23e-4537-9608-ab072d56fe68)
+- ![Screenshot 2024-07-22 173208](https://github.com/user-attachments/assets/855c3309-fd49-44b6-bb97-d848eb9d8cca)
+- ![Screenshot 2024-07-22 172809](https://github.com/user-attachments/assets/7cd4dda2-006a-4c52-9255-7e45848afae1)
+- ![Screenshot 2024-07-22 172913](https://github.com/user-attachments/assets/f5b55b61-8339-4d26-bd40-63b40264ed59)
+
+
 
 
 
@@ -34,7 +38,7 @@ To run the BiteBlitz website locally, follow these steps:
 2. Navigate to the project directory: `cd biteblitz`
 3. Install dependencies: `npm install` in both the client and server directories
 4. Set up environment variables: Create a `.env` file in the server directory and add your MongoDB URI and JWT secret key.
-5. Start the development server: Run `npm start` in both the client and server directories.
+5. Start the development server: Run `npm start` and 'nodemon index.js ' in the client and server directories.
 
 ## Contributing
 
