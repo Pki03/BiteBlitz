@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const MONGOURL = "mongodb+srv://khurmiprateek3:prateek17dec@cluster0.decbbww.mongodb.net/food?retryWrites=true&w=majority";
+const MONGOURL = "mongodb_link";
 
 const mongoDB = async () => {
     try {
