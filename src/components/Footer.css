@@ -1,0 +1,81 @@
+.footer {
+    background: linear-gradient(135deg, #f3a2b7, #f0e4d7); /* Gradient color from light pink to a soft beige */
+    color: #333; /* Darker text color for better readability */
+    font-weight: bold;
+    padding: 2rem 0; /* Increased padding for a more spacious look */
+    margin: 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
+    height: 100%; /* Ensure it takes full height */
+  }
+  
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem; /* Increased margin for better spacing */
+  }
+  
+  .footer-link {
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+    font-size: 2rem; /* Adjusted font size for the logo */
+  }
+  
+  .footer-link:hover {
+    color: #f39c12; /* Highlight color on hover */
+  }
+  
+  .footer-text {
+    font-size: 1.2rem; /* Increased font size for emphasis */
+  }
+  
+  .footer-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 0; /* Remove default margin */
+  }
+  
+  .footer-nav li {
+    display: inline; /* Ensure list items are inline */
+  }
+  
+  .footer-icon {
+    color: #333;
+    font-size: 1.5rem; /* Icon size */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .footer-icon:hover {
+    color: #f39c12; /* Highlight color on hover */
+    transform: scale(1.2); /* Slightly increase size on hover */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .footer {
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Ensure Font Awesome icons are available */
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+  

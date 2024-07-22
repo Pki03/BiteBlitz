@@ -4,6 +4,7 @@ import Badge from "react-bootstrap/Badge";
 import Modal from "../Modal";
 import Cart from "../screens/Cart";
 import { useCartState } from "./ContextReducer";
+import './NavBar.css'; // Import the CSS file for styling
 
 const NavBar = () => {
   const [cartView, setCartView] = useState(false);
@@ -37,33 +38,27 @@ const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    <Link to="login"></Link>
+    navigate("/login");
   };
 
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-dark"
-      style={{
-        backgroundColor: "#162447",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
-      }}
-    >
+    <nav className={`navbar navbar-expand-lg ${theme}-theme`}>
       <div className="container-fluid">
-        <Link className="navbar-brand fs-2 fw-bold" to="/">
-          <span style={{ fontFamily: "Arial", color: "#fff" }}>BiteBlitz</span>
+        <Link className="navbar-brand" to="/">
+          <span className="navbar-logo">BiteBlitz</span>
         </Link>
-        <button className="btn" onClick={toggleTheme}>
+        <button className="btn theme-toggle-btn" onClick={toggleTheme}>
           {theme === "light" ? (
             <img
               src="https://cdn4.iconfinder.com/data/icons/music-ui-solid-24px/24/moon_dark_mode_night-2-512.png"
               alt="Light Mode"
-              style={{ width: "24px", height: "24px", filter: "brightness(0) invert(1)" }}
+              className="theme-icon"
             />
           ) : (
             <img
               src="https://cdn2.iconfinder.com/data/icons/bubble-set-general/48/Sun-512.png"
               alt="Dark Mode"
-              style={{ width: "24px", height: "24px", filter: "brightness(0) invert(1)" }}
+              className="theme-icon"
             />
           )}
         </button>
@@ -82,18 +77,18 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link active fs-5" aria-current="page" to="/">
-                <span style={{ fontFamily: "Arial", color: "#fff" }}>Home</span>
+              <Link className="nav-link" aria-current="page" to="/">
+                <span className="nav-link-text">Home</span>
               </Link>
             </li>
             {localStorage.getItem("authToken") && (
               <li className="nav-item">
                 {/* <Link
-                  className="nav-link active fs-5"
+                  className="nav-link"
                   aria-current="page"
                   to="/myorder"
                 >
-                  <span style={{ fontFamily: "Arial", color: "#fff" }}>
+                  <span className="nav-link-text">
                     My Orders
                   </span>
                 </Link> */}
@@ -102,26 +97,20 @@ const NavBar = () => {
           </ul>
           {!localStorage.getItem("authToken") ? (
             <div className="d-flex">
-              <Link className="btn bg-white text-success mx-1" to="/login">
-                <span style={{ fontFamily: "Arial", color: "#28a745" }}>
-                  Login
-                </span>
+              <Link className="btn btn-primary mx-1" to="/login">
+                <span className="btn-text">Login</span>
               </Link>
-              <Link to="/createuser" className="btn bg-white text-success mx-1">
-                <span style={{ fontFamily: "Arial", color: "#28a745" }}>
-                  Sign Up
-                </span>
+              <Link to="/createuser" className="btn btn-primary mx-1">
+                <span className="btn-text">Sign Up</span>
               </Link>
             </div>
           ) : (
             <div>
               <div
-                className="btn bg-white text-success mx-2"
+                className="btn btn-primary mx-2"
                 onClick={() => setCartView(true)}
               >
-                <span style={{ fontFamily: "Arial", color: "#dc3545" }}>
-                  My Cart
-                </span>{" "}
+                <span className="btn-text">My Cart</span>{" "}
                 <Badge pill bg="danger">
                   {data.length}
                 </Badge>
@@ -132,12 +121,10 @@ const NavBar = () => {
                 </Modal>
               ) : null}
               <div
-                className="btn bg-white text-danger mx-2"
+                className="btn btn-danger mx-2"
                 onClick={handleLogout}
               >
-                <span style={{ fontFamily: "Arial", color: "#dc3545" }}>
-                  Log Out
-                </span>
+                <span className="btn-text">Log Out</span>
               </div>
             </div>
           )}

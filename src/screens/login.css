@@ -1,214 +1,210 @@
+/* Global Reset */
 .login-page * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+/* Main Login Page Container */
 .login-page {
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif;
   justify-content: center;
   min-height: 100vh;
-  background: #0c0116;
+  background: linear-gradient(135deg, #020218, #fbc2eb);
   display: flex;
   align-items: center;
+  backdrop-filter: blur(8px); /* Blurry effect */
 }
 
+/* Login Form Styling */
 .login-page .form {
   position: relative;
-  background: #0c0116;
+  background: rgba(12, 1, 22, 0.9); /* Slight transparency for the background */
   overflow: hidden;
-  box-shadow: 0px 0px 10px 0px rgb(116, 119, 114);
-  border-radius: 5px;
-  padding: 60px 15px;
-  width: 270px;
-  height: 350px;
-  margin: 0 auto; /* center the form horizontally */
-  max-width: 90%; /* maximum width of the form */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+  border-radius: 15px; /* More rounded corners */
+  padding: 40px 30px;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto; /* Center the form horizontally */
+  max-width: 90%; /* Maximum width of the form */
 }
 
+/* Inner Form Container */
 .login-page .form-inner {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: #0c0116;
+  background: rgba(12, 1, 22, 0.9); /* Slight transparency for the background */
   height: 98%;
   width: 98%;
   transform: translate(-50%, -50%);
 }
 
+/* Content Inside the Form */
 .login-page .content {
   width: 100%;
-  padding: 25px;
+  padding: 20px;
   height: 100%;
 }
+
+/* Form Header */
 .login-page .form-inner h2 {
   text-align: center;
-  padding-top: 35px;
-  font-size: 25px;
-  color: #d7a3d7;
-}
-.login-page .input {
-  display: block;
-  padding: 12px 15px;
-  border: 1.5px solid rgb(109, 87, 121);
-  outline: none;
-  background: #19052c;
-  color: white;
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-.login-page .btn {
-  margin-top: 40px;
-  width: 100%;
-  cursor: pointer;
-  color: white;
-  border: none;
-  font-size: 18px;
-  border-radius: 10px;
-  transition: 0.4s;
-  padding: 12px;
-  outline: none;
-  background: #800080;
-}
-.login-page .btn:hover {
-  background: #c907c9;
+  padding-top: 20px;
+  font-size: 28px;
+  color: #f5f5f5;
 }
 
+/* Input Fields */
+.login-page .input {
+  display: block;
+  padding: 14px 18px;
+  border: 1.5px solid #d0a3d6;
+  outline: none;
+  background: rgba(25, 5, 44, 0.8);
+  color: #fff;
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+/* Button Styling */
+.login-page .btn {
+  margin-top: 30px;
+  width: 100%;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-size: 18px;
+  border-radius: 12px;
+  transition: background 0.4s, transform 0.3s;
+  padding: 12px;
+  outline: none;
+  background: linear-gradient(45deg, #d46a9e, #c61f6f);
+}
+
+/* Button Hover Effect */
+.login-page .btn:hover {
+  background: linear-gradient(45deg, #c61f6f, #d46a9e);
+  transform: scale(1.05); /* Slight scale-up effect */
+}
+
+/* Decorative Elements (Animated Fire Background) */
 .login-page .form span {
   height: 50%;
   width: 50%;
   position: absolute;
+  opacity: 0.7; /* Slight transparency for fire effect */
+  border-radius: 50%;
+  mix-blend-mode: screen; /* Blends the colors for a fiery effect */
+}
+
+/* Fire-like Keyframes for Background Animation */
+@keyframes fire1 {
+  0% {
+    top: -60%;
+    left: -60%;
+    background: rgba(255, 0, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 140, 0, 0.8);
+    transform: scale(1.5) rotate(45deg);
+  }
+  100% {
+    top: -60%;
+    left: -60%;
+    background: rgba(255, 0, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fire2 {
+  0% {
+    bottom: -60%;
+    right: -60%;
+    background: rgba(255, 100, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    bottom: 50%;
+    right: 50%;
+    background: rgba(255, 69, 0, 0.8);
+    transform: scale(1.5) rotate(-45deg);
+  }
+  100% {
+    bottom: -60%;
+    right: -60%;
+    background: rgba(255, 100, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fire3 {
+  0% {
+    top: -60%;
+    left: -60%;
+    background: rgba(255, 150, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    top: 50%;
+    left: 50%;
+    background: rgba(255, 69, 0, 0.8);
+    transform: scale(1.5) rotate(45deg);
+  }
+  100% {
+    top: -60%;
+    left: -60%;
+    background: rgba(255, 150, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes fire4 {
+  0% {
+    bottom: -60%;
+    right: -60%;
+    background: rgba(255, 60, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    bottom: 50%;
+    right: 50%;
+    background: rgba(255, 100, 0, 0.8);
+    transform: scale(1.5) rotate(-45deg);
+  }
+  100% {
+    bottom: -60%;
+    right: -60%;
+    background: rgba(255, 60, 0, 0.6);
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .login-page .form span:nth-child(1) {
-  background: #ffda05;
-  animation: 5s span1 infinite linear;
-  animation-delay: 1s;
+  animation: fire1 4s infinite;
   top: 0;
-  left: -48%;
+  left: -50%;
 }
+
 .login-page .form span:nth-child(2) {
-  background: #00a800;
+  animation: fire2 4s infinite;
   bottom: 0;
-  right: -48%;
-  animation: 5s span2 infinite linear;
+  right: -50%;
 }
+
 .login-page .form span:nth-child(3) {
-  background: #800080;
-  top: 0px;
-  animation: 5s span3 infinite linear;
-  right: -48%;
+  animation: fire3 4s infinite;
+  top: 0;
+  right: -50%;
 }
+
 .login-page .form span:nth-child(4) {
-  animation: 5s span4 infinite linear;
-  animation-delay: 1s;
-  background: #ff0000;
+  animation: fire4 4s infinite;
   bottom: 0;
-  right: -48%;
-}
-
-@keyframes span1 {
-  0% {
-    top: -48%;
-    left: -48%;
-  }
-  25% {
-    top: -48%;
-    left: 98%;
-  }
-  50% {
-    top: 98%;
-    left: 98%;
-  }
-  75% {
-    top: 98%;
-    left: -48%;
-  }
-  100% {
-    top: -48%;
-    left: -48%;
-  }
-}
-@keyframes span2 {
-  0% {
-    bottom: -48%;
-    right: -48%;
-  }
-  25% {
-    bottom: -48%;
-    right: 98%;
-  }
-  50% {
-    bottom: 98%;
-    right: 98%;
-  }
-  75% {
-    bottom: 98%;
-    right: -48%;
-  }
-  100% {
-    bottom: -48%;
-    right: -48%;
-  }
-}
-@keyframes span3 {
-  0% {
-    top: -48%;
-    left: -48%;
-  }
-  25% {
-    top: -48%;
-    left: 98%;
-  }
-  50% {
-    top: 98%;
-    left: 98%;
-  }
-  75% {
-    top: 98%;
-    left: -48%;
-  }
-  100% {
-    top: -48%;
-    left: -48%;
-  }
-}
-
-@keyframes span4 {
-  0% {
-    bottom: -48%;
-    right: -48%;
-  }
-  25% {
-    bottom: -48%;
-    right: 98%;
-  }
-  50% {
-    bottom: 98%;
-    right: 98%;
-  }
-  75% {
-    bottom: 98%;
-    right: -48%;
-  }
-  100% {
-    bottom: -48%;
-    right: -48%;
-  }
-}
-.login-page .input {
-  display: block;
-  padding: 12px 15px;
-  border: 1.5px solid rgb(109, 87, 121);
-  outline: none;
-  background: #19052c;
-  color: white;
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-.login-page .input:last-child {
-  margin-bottom: 20px; /* Add margin to the bottom of the last input */
+  left: -50%;
 }

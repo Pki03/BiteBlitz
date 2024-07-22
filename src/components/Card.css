@@ -1,0 +1,62 @@
+/* Card.css */
+
+.custom-card {
+    background: linear-gradient(135deg, #f3a2b7, #f0e4d7);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .custom-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .custom-card-img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .custom-card-body {
+    padding: 15px;
+    color: #333;
+  }
+  
+  .custom-card-title {
+    font-family: 'Cursive', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .custom-select {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 5px;
+  }
+  
+  .custom-price {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .custom-button {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color: #218838;
+    transform: scale(1.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  

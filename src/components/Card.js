@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import { useCartDispatch, useCartState } from "./ContextReducer";
+import './Card.css'; // Import the CSS file for styling
 
 const useCardCart = () => {
   let dispatch = useCartDispatch();
   let data = useCartState();
-  const priceRef = useRef(); // Avoid potential initial undefined value
+  const priceRef = useRef();
 
   const handleAddToCart = async (foodItem, finalPrice, qty, size, props) => {
     let food = [];
@@ -39,61 +40,55 @@ const Card = (props) => {
   const options = props.options;
   const priceOptions = Object.keys(options);
   const [qty, setQty] = useState(1);
-  const [size, setSize] = useState(priceOptions[0]); // Initialize size with the first available option
+  const [size, setSize] = useState(priceOptions[0]);
 
-  const totalPrice = qty * (parseInt(options[size]) || 0); // Calculate total price based on selected size and quantity
+  const totalPrice = qty * (parseInt(options[size]) || 0);
 
   return (
-    <div>
-      <div>
-        <div className="card" style={{ width: "18rem", maxHeight: "360px" }}>
-          <img
-            className="card-img-top"
-            src={props.foodItem.img}
-            alt="Card image cap"
-            style={{ height: "200px", objectFit: "fill" }}
-          />
-          <div className="card-body">
-            <h5 className="card-title">{props.foodItem.name}</h5>
-            <div className="container w-100"></div>
+    <div className="card custom-card">
+      <img
+        className="card-img-top custom-card-img"
+        src={props.foodItem.img}
+        alt="Card image cap"
+      />
+      <div className="card-body custom-card-body">
+        <h5 className="card-title custom-card-title">{props.foodItem.name}</h5>
+        <div className="container w-100"></div>
 
-            <div className="d-flex">
-              <select
-                className="m-2 h-100 bg-dark rounded"
-                value={qty}
-                onChange={(e) => setQty(parseInt(e.target.value))}
-              >
-                {Array.from(Array(6), (e, i) => (
-                  <option key={i + 1} value={i + 1}>
-                    {i + 1}
-                  </option>
-                ))}
-              </select>
-              <select
-                className="m-2 h-100 bg-dark rounded"
-                value={size}
-                onChange={(e) => setSize(e.target.value)}
-              >
-                {priceOptions.map((data) => (
-                  <option key={data} value={data}>
-                    {data}
-                  </option>
-                ))}
-              </select>
-            </div>
+        <div className="d-flex">
+          <select
+            className="m-2 h-100 bg-dark rounded custom-select"
+            value={qty}
+            onChange={(e) => setQty(parseInt(e.target.value))}
+          >
+            {Array.from(Array(6), (e, i) => (
+              <option key={i + 1} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
+          </select>
+          <select
+            className="m-2 h-100 bg-dark rounded custom-select"
+            value={size}
+            onChange={(e) => setSize(e.target.value)}
+          >
+            {priceOptions.map((data) => (
+              <option key={data} value={data}>
+                {data}
+              </option>
+            ))}
+          </select>
+        </div>
 
-            <div className="d-flex align-items-center justify-content-between mt-2">
-              <div className="h-1 fs-5">rs{totalPrice}/-</div>
+        <div className="d-flex align-items-center justify-content-between mt-2">
+          <div className="h-1 fs-5 custom-price">💲{totalPrice}/-</div>
 
-              <button
-                className={"btn btn-success ms-2 custom-button"}
-                style={{ fontSize: "14px", padding: "5px 10px" }}
-                onClick={() => handleAddToCart(props.foodItem, totalPrice, qty, size, props)} // Pass totalPrice instead of qty as price
-              >
-                Add
-              </button>
-            </div>
-          </div>
+          <button
+            className="btn btn-success ms-2 custom-button"
+            onClick={() => handleAddToCart(props.foodItem, totalPrice, qty, size, props)}
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>

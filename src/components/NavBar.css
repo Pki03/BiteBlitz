@@ -1,0 +1,126 @@
+/* NavBar.css */
+
+/* Gradient background for navbar */
+.navbar {
+    background: linear-gradient(135deg, #f3a2b7, #f0e4d7); /* Gradient color from light pink to a soft beige */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 0.5rem 1rem; /* Added padding for better spacing */
+    transition: background-color 0.3s ease; /* Smooth transition for background color changes */
+  }
+  
+  /* Darker theme navbar */
+  .navbar-dark-theme {
+    background: linear-gradient(135deg, #f3a2b7, #f0e4d7); /* Same gradient for dark theme */
+  }
+  
+  /* Navbar light theme */
+  .navbar-light-theme {
+    background: linear-gradient(135deg, #f3a2b7, #f0e4d7); /* Same gradient for light theme */
+  }
+  
+  /* Navbar brand/logo styling */
+  .navbar-logo {
+    font-family: 'Cursive', cursive; /* Cursive font family */
+    color: #333; /* Darker text color for better readability */
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    letter-spacing: 1px; /* Added spacing between letters */
+  }
+  
+  /* Button to toggle theme */
+  .theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.3s ease; /* Smooth transition for icon transformation */
+  }
+  
+  .theme-toggle-btn:hover {
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+  }
+  
+  .theme-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Navbar link styling */
+  .nav-link {
+    font-family: 'Arial', sans-serif;
+    color: #333; /* Darker text color for better readability */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase text for consistency */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition for color and shadow changes */
+  }
+  
+  .nav-link:hover {
+    color: #f39c12; /* Highlight color on hover */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow effect on hover */
+  }
+  
+  /* Navbar button styling */
+  .btn-primary {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem; /* Increased padding for a more substantial button */
+    border-radius: 0.25rem; /* Rounded corners */
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem; /* Slightly larger font size for better readability */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .btn-primary:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increased shadow for hover effect */
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem; /* Increased padding for a more substantial button */
+    border-radius: 0.25rem; /* Rounded corners */
+    font-family: 'Arial', sans-serif;
+    font-size: 1.1rem; /* Slightly larger font size for better readability */
+    font-weight: bold; /* Bold text */
+    text-transform: uppercase; /* Uppercase text for emphasis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Increased shadow for hover effect */
+  }
+  
+  /* General button text styling */
+  .btn-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase; /* Uppercase text for consistency */
+    font-weight: bold; /* Bold text */
+  }
+  
+  /* Fade-in animation for navbar */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .navbar {
+    animation: fadeIn 1s ease-out;
+  }
+  

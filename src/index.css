@@ -26,4 +26,67 @@ button.custom-button:hover {
   background-color: #000;
   color: #fff;
 }
+.carousel-item {
+  transition: transform 1s ease, opacity 1s ease !important;
+}
+
+.carousel-fade .carousel-item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-item-next,
+.carousel-fade .carousel-item-prev,
+.carousel-fade .carousel-item.active,
+.carousel-fade .carousel-item-next.carousel-item-start,
+.carousel-fade .carousel-item-prev.carousel-item-end {
+  transform: translateX(0);
+}
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* or adjust as needed */
+}
+
+.carousel-image {
+  object-fit: cover; /* Cover the entire container */
+  height: 100%;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Adjust overlay color and opacity */
+  pointer-events: none;
+}
+.carousel-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50vw; /* Extends beyond the left edge */
+  width: 200vw; /* Extends beyond both edges */
+  height: 100vh;
+  background: linear-gradient(to bottom right, rgba(170, 148, 148, 0.8), rgba(156, 98, 98, 0.6));
+  background-size: cover;
+  filter: blur(8px); /* Adjust the blur radius */
+  z-index: -1; /* Ensure it is behind the carousel */
+}
+
+
+
+
 

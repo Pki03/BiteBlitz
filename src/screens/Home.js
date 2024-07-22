@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import NavBar from '../components/NavBar';
-import Carousel from '../components/Carousel';
-import Footer from '../components/Footer';
-import Card from '../components/Card'; // Import the Card component
-import './home.css'; // Import the CSS file
+import React, { useState, useEffect } from "react";
+import NavBar from "../components/NavBar";
+import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
+import Card from "../components/Card"; // Import the Card component
+import "./home.css"; // Import the CSS file
 
 export default function Home() {
-  const [search,setSearch]=useState("")
+  const [search, setSearch] = useState("");
   const [foodCategory, setFoodCategory] = useState([]);
   const [foodItems, setFoodItems] = useState([]);
 
@@ -15,8 +15,8 @@ export default function Home() {
       let response = await fetch("http://localhost:5000/api/foodData", {
         method: "POST",
         headers: {
-          'Content-type': 'application/json'
-        }
+          "Content-type": "application/json",
+        },
       });
 
       response = await response.json();
@@ -26,7 +26,7 @@ export default function Home() {
     } catch (error) {
       console.error("Error fetching data:", error.message);
     }
-  }
+  };
 
   useEffect(() => {
     loadData();
@@ -37,14 +37,25 @@ export default function Home() {
       <NavBar />
 
       <div>
-        {/* Replace "Carousel" with your Carousel component */}
         <Carousel />
-
-        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div className="carousel-inner" id='carousel'>
-            <div className='carousel-caption'>
+        <div
+          id="carouselExampleFade"
+          className="carousel slide carousel-fade"
+          data-bs-ride="carousel"
+        >
+          <div className="carousel-inner" id="carousel">
+            <div className="carousel-caption">
               <div className="d-flex justify-content-center">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={search} onChange={(e) => { setSearch(e.target.value) }} />
+                <input
+                  className="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                />
               </div>
             </div>
             <div className="carousel-item active">
@@ -56,21 +67,38 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='container m-4 rounded'>
+      <div className="container m-4 rounded cen">
         {foodCategory.length !== 0 ? (
-          <div className='row mb-3'>
+          <div className="row mb-3">
             {foodCategory.map((data) => (
-              <div key={data._id} className='col-12'>
-                <div className='fs-5 m-3'>
+              <div key={data._id} className="col-12">
+                <div className="fs-5 m-3">
                   <strong>{data.CategoryName}</strong>
                   <hr />
-                  <div className='row'>
+                  <div className="row">
                     {foodItems.length !== 0 ? (
                       foodItems
-                        .filter((item) => item.CategoryName === data.CategoryName && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                        .filter(
+                          (item) =>
+                            item.CategoryName === data.CategoryName &&
+                            item.name
+                              .toLowerCase()
+                              .includes(search.toLocaleLowerCase())
+                        )
                         .map((filteredItem) => (
-                          <div key={filteredItem._id} className='col-12 col-md-6 col-lg-3'>
-                            <Card foodItem={filteredItem} options={filteredItem.options && filteredItem.options.length > 0 ? filteredItem.options[0] : null} />
+                          <div
+                            key={filteredItem._id}
+                            className="col-12 col-md-6 col-lg-3"
+                          >
+                            <Card
+                              foodItem={filteredItem}
+                              options={
+                                filteredItem.options &&
+                                filteredItem.options.length > 0
+                                  ? filteredItem.options[0]
+                                  : null
+                              }
+                            />
                           </div>
                         ))
                     ) : (
@@ -84,9 +112,6 @@ export default function Home() {
         ) : (
           <div>Loading...</div>
         )}
-
-        {/* This Card is now within the container */}
-        {/* <Card /> */}
       </div>
 
       <Footer />
