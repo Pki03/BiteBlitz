@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import Delete from '@material-ui/icons/Delete';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useCartState, useCartDispatch } from '../components/ContextReducer';
 import './Cart.css'; // Import the CSS file for styling
 
@@ -41,7 +41,7 @@ const Cart = () => {
                 return;
             }
 
-            const response = await fetch('http://localhost:5000/api/orderData', {
+            const response = await fetch('http://localhost:5001/api/orderData', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const Cart = () => {
                             <td>💲{food.price}</td>
                             <td>
                                 <button type='button' className='btn p-0'>
-                                    <Delete className='delete-icon' onClick={() => dispatch({ type: 'REMOVE', index })} />
+                                    <DeleteIcon className='delete-icon' onClick={() => dispatch({ type: 'REMOVE', index })} />
                                 </button>
                             </td>
                         </tr>

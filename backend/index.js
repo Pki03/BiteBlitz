@@ -1,10 +1,14 @@
+const mongoDB = require("./db");
+mongoDB();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 5000;
+const port = 5001;
 
-const mongoDB = require("./db");
-mongoDB();
+// console.log("Mongo URI:", MONGOURL);
+
+
+
 
 const app = express();
 
