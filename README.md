@@ -1,54 +1,158 @@
-# BiteBlitz Food Ordering Website
+# 🍔 BiteBlitz – Food Ordering Website
 
+**BiteBlitz** is a modern, full-stack food ordering website built using the **MERN** stack (MongoDB, Express.js, React.js, Node.js). It offers a seamless and responsive user experience, secure user authentication, dynamic cart management, and online payments via **Razorpay**.
 
-BiteBlitz is a food ordering website developed using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It features a user-friendly interface for ordering food items, a secure login/signup system, and a smooth checkout process. The website stores user and order data in a MongoDB database.
+---
 
-## Features
+## 🚀 Features
 
-- **Login/Signup:** Users can create an account or log in using their credentials.
-- **Food Ordering:** Browse through a variety of food items displayed in cards and add them to the cart.
-- **Shopping Cart:** View and manage items in the cart before proceeding to checkout.
-- **Secure Checkout:** Enter delivery details and complete the order securely.
-- **Database Integration:** User and order data is stored in a MongoDB database.
-- ![Screenshot 2024-07-22 173019](https://github.com/user-attachments/assets/2e685a59-6281-4ae8-8cce-a780ba779aa7)
-- ![Screenshot 2024-07-22 173108](https://github.com/user-attachments/assets/de9255b0-c91c-4b41-bc63-6a5a4a4d7ce8)
-- ![Screenshot 2024-07-22 173131](https://github.com/user-attachments/assets/65781138-b23e-4537-9608-ab072d56fe68)
-- ![Screenshot 2024-07-22 173208](https://github.com/user-attachments/assets/855c3309-fd49-44b6-bb97-d848eb9d8cca)
-- ![Screenshot 2024-07-22 172809](https://github.com/user-attachments/assets/7cd4dda2-006a-4c52-9255-7e45848afae1)
-- ![Screenshot 2024-07-22 172913](https://github.com/user-attachments/assets/f5b55b61-8339-4d26-bd40-63b40264ed59)
+* 🔐 **Authentication**: Secure user login & registration with JWT.
+* 🍽️ **Food Menu**: Browse and explore food items displayed in dynamic cards.
+* 🛒 **Shopping Cart**: Add, remove, and manage your cart items easily.
+* 💸 **Checkout with Razorpay**: Complete your order using Razorpay payment gateway.
+* 📦 **Order History**: View previously placed orders stored in MongoDB.
+* 🧾 **Admin-Free Design**: No admin panel required—ideal for MVPs and learning projects.
+* ☁️ **MongoDB Database**: Stores user, cart, and order data securely.
+* 🖼️ **Beautiful UI**: Styled using Bootstrap & custom CSS for a clean experience.
 
+---
 
+### 🏠 Home Page
 
+![Home Page](https://github.com/user-attachments/assets/54fa02ff-2427-425c-ad90-10db72b3cc8a)
 
+### 🍕 Menu Items
 
+![Menu](https://github.com/user-attachments/assets/afc753d5-6c12-4324-ae60-871bf33ab15e)
 
+### 🛍️ Cart Overview
 
-## Technologies Used
+![Cart](https://github.com/user-attachments/assets/631b668c-7274-4f62-bcc9-a50349f46b4f)
 
-- **Frontend:** React.js for the user interface.
-- **Backend:** Node.js and Express.js for server-side logic.
-- **Database:** MongoDB for storing user and order data.
-- **Authentication:** JWT (JSON Web Tokens) for secure authentication.
+### 💳 Razorpay Checkout
 
-## Getting Started
+![Razorpay](https://github.com/user-attachments/assets/8bf9f523-661a-4ae7-8f3f-1d800414a4cc)
 
-To run the BiteBlitz website locally, follow these steps:
+### ✅ Order Confirmation
 
-1. Clone the repository: `git clone https://github.com/your-username/biteblitz.git`
-2. Navigate to the project directory: `cd biteblitz`
-3. Install dependencies: `npm install` in both the client and server directories
-4. Set up environment variables: Create a `.env` file in the server directory and add your MongoDB URI and JWT secret key.
-5. Start the development server: Run `npm start` and 'nodemon index.js ' in the client and server directories.
+![Order Placed](https://github.com/user-attachments/assets/1cba9612-11e9-458e-bd80-2956b36e75cf)
 
-## Contributing
+### 📜 Order History
 
-We welcome contributions to BiteBlitz! If you have ideas for new features, improvements, or bug fixes, please open an issue or submit a pull request.
+![History](https://github.com/user-attachments/assets/35b9219a-f24a-4bcd-b5b0-32f982d640a2)
 
-## Acknowledgements
+---
 
-- This project was developed as part of a learning experience in the MERN stack.
+## 🛠️ Tech Stack
+
+| Layer        | Technology           |
+| ------------ | -------------------- |
+| **Frontend** | React.js, Bootstrap  |
+| **Backend**  | Node.js, Express.js  |
+| **Database** | MongoDB Atlas        |
+| **Auth**     | JWT (JSON Web Token) |
+| **Payments** | Razorpay             |
+
+---
+
+## ⚙️ Getting Started (Local Setup)
+
+### Prerequisites
+
+* Node.js & npm installed
+* MongoDB Atlas URI
+* Razorpay API keys
+* Git
+
+### Steps
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/your-username/BiteBlitz.git
+   cd BiteBlitz
+   ```
+
+2. **Install dependencies**
+
+   * For frontend:
+
+     ```bash
+     cd client
+     npm install
+     ```
+   * For backend:
+
+     ```bash
+     cd ../server
+     npm install
+     ```
+
+3. **Create `.env` in `server/` and add:**
+
+   ```env
+   MONGO_URI=your_mongodb_uri
+   JWT_SECRET=your_jwt_secret
+   RAZORPAY_KEY=your_razorpay_key
+   RAZORPAY_SECRET=your_razorpay_secret
+   ```
+
+4. **Start backend server**
+
+   ```bash
+   nodemon index.js
+   ```
+
+5. **Start frontend**
+
+   ```bash
+   cd client
+   npm start
+   ```
+
+---
+
+## 🧪 API Endpoints (Backend)
+
+* `POST /api/createuser` – Register new user
+* `POST /api/loginuser` – Login existing user
+* `POST /api/razorpay/createOrder` – Create Razorpay order
+* `POST /api/orderData` – Save order to DB
+* `POST /api/myOrders` – Get past orders
+
+---
+
+## 🧠 Learnings
+
+* Gained hands-on experience with full-stack MERN development
+* Integrated third-party payments with Razorpay
+* Implemented secure JWT-based authentication
+* Designed and styled responsive React components
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! If you want to:
+
+* Add new features
+* Improve performance or design
+* Fix bugs
+
+Then feel free to **open an issue** or **submit a pull request**. Let’s make BiteBlitz even better together!
 
 
 ---
 
+## 🌐 Live Demo 
 
+
+
+```md
+👉 [Live Frontend](https://biteblitz-client.vercel.app)  
+🔗 [Backend API](https://biteblitz-api.onrender.com)
+```
+
+---
+
+Let me know if you'd like help deploying it or turning this into a GitHub Pages/portfolio site!
