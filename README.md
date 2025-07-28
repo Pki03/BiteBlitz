@@ -144,15 +144,3 @@ Then feel free to **open an issue** or **submit a pull request**. Let’s make B
 
 ---
 
-## 🌐 Live Demo 
-
-
-
-```md
-👉 [Live Frontend](https://biteblitz-client.vercel.app)  
-🔗 [Backend API](https://biteblitz-api.onrender.com)
-```
-
----
-
-Let me know if you'd like help deploying it or turning this into a GitHub Pages/portfolio site!
