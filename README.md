@@ -17,27 +17,22 @@
 
 ---
 
-### 🏠 Home Page
+
 
 ![Home Page](https://github.com/user-attachments/assets/54fa02ff-2427-425c-ad90-10db72b3cc8a)
 
-### 🍕 Menu Items
 
 ![Menu](https://github.com/user-attachments/assets/afc753d5-6c12-4324-ae60-871bf33ab15e)
 
-### 🛍️ Cart Overview
 
 ![Cart](https://github.com/user-attachments/assets/631b668c-7274-4f62-bcc9-a50349f46b4f)
 
-### 💳 Razorpay Checkout
 
 ![Razorpay](https://github.com/user-attachments/assets/8bf9f523-661a-4ae7-8f3f-1d800414a4cc)
 
-### ✅ Order Confirmation
 
 ![Order Placed](https://github.com/user-attachments/assets/1cba9612-11e9-458e-bd80-2956b36e75cf)
 
-### 📜 Order History
 
 ![History](https://github.com/user-attachments/assets/35b9219a-f24a-4bcd-b5b0-32f982d640a2)
 
