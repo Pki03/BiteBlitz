@@ -1,210 +1,80 @@
-/* Global Reset */
-.login-page * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-/* Main Login Page Container */
+/* Background */
 .login-page {
-  font-family: 'Arial', sans-serif;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #020218, #fbc2eb);
   display: flex;
+  justify-content: center;
   align-items: center;
-  backdrop-filter: blur(8px); /* Blurry effect */
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(145deg, #654ea3, #eaafc8);
 }
 
-/* Login Form Styling */
-.login-page .form {
-  position: relative;
-  background: rgba(12, 1, 22, 0.9); /* Slight transparency for the background */
-  overflow: hidden;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
-  border-radius: 15px; /* More rounded corners */
+/* Card */
+.form {
+  background: rgba(20, 10, 30, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   padding: 40px 30px;
-  width: 300px;
-  height: 400px;
-  margin: 0 auto; /* Center the form horizontally */
-  max-width: 90%; /* Maximum width of the form */
+  width: 320px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Inner Form Container */
-.login-page .form-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: rgba(12, 1, 22, 0.9); /* Slight transparency for the background */
-  height: 98%;
-  width: 98%;
-  transform: translate(-50%, -50%);
+/* Form inner content */
+.form-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* Content Inside the Form */
-.login-page .content {
-  width: 100%;
-  padding: 20px;
-  height: 100%;
-}
-
-/* Form Header */
-.login-page .form-inner h2 {
-  text-align: center;
-  padding-top: 20px;
-  font-size: 28px;
-  color: #f5f5f5;
-}
-
-/* Input Fields */
-.login-page .input {
-  display: block;
-  padding: 14px 18px;
-  border: 1.5px solid #d0a3d6;
-  outline: none;
-  background: rgba(25, 5, 44, 0.8);
-  color: #fff;
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 20px;
-}
-
-/* Button Styling */
-.login-page .btn {
-  margin-top: 30px;
-  width: 100%;
-  cursor: pointer;
-  color: #fff;
+/* Button */
+.btn {
+  background: linear-gradient(90deg, #d46a9e, #c61f6f);
+  color: white;
   border: none;
   font-size: 18px;
-  border-radius: 12px;
-  transition: background 0.4s, transform 0.3s;
-  padding: 12px;
+  padding: 14px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.03);
+  background: linear-gradient(90deg, #c61f6f, #d46a9e);
+}
+
+/* Input fields */
+.input {
+  padding: 14px 18px;
+  background-color: rgba(25, 5, 44, 0.8);
+  border: 2px solid #cfa0d1;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 14px;
   outline: none;
-  background: linear-gradient(45deg, #d46a9e, #c61f6f);
 }
 
-/* Button Hover Effect */
-.login-page .btn:hover {
-  background: linear-gradient(45deg, #c61f6f, #d46a9e);
-  transform: scale(1.05); /* Slight scale-up effect */
+.input::placeholder {
+  color: #bda8c9;
 }
 
-/* Decorative Elements (Animated Fire Background) */
-.login-page .form span {
-  height: 50%;
-  width: 50%;
-  position: absolute;
-  opacity: 0.7; /* Slight transparency for fire effect */
-  border-radius: 50%;
-  mix-blend-mode: screen; /* Blends the colors for a fiery effect */
+/* Signup text */
+.signup-link {
+  text-align: center;
+  margin-top: 10px;
 }
 
-/* Fire-like Keyframes for Background Animation */
-@keyframes fire1 {
-  0% {
-    top: -60%;
-    left: -60%;
-    background: rgba(255, 0, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    top: 50%;
-    left: 50%;
-    background: rgba(255, 140, 0, 0.8);
-    transform: scale(1.5) rotate(45deg);
-  }
-  100% {
-    top: -60%;
-    left: -60%;
-    background: rgba(255, 0, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
+.signup-link p {
+  font-size: 13px;
+  color: #ccc;
 }
 
-@keyframes fire2 {
-  0% {
-    bottom: -60%;
-    right: -60%;
-    background: rgba(255, 100, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    bottom: 50%;
-    right: 50%;
-    background: rgba(255, 69, 0, 0.8);
-    transform: scale(1.5) rotate(-45deg);
-  }
-  100% {
-    bottom: -60%;
-    right: -60%;
-    background: rgba(255, 100, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
+.signup-link a {
+  color: #f48fb1;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
-@keyframes fire3 {
-  0% {
-    top: -60%;
-    left: -60%;
-    background: rgba(255, 150, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    top: 50%;
-    left: 50%;
-    background: rgba(255, 69, 0, 0.8);
-    transform: scale(1.5) rotate(45deg);
-  }
-  100% {
-    top: -60%;
-    left: -60%;
-    background: rgba(255, 150, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-@keyframes fire4 {
-  0% {
-    bottom: -60%;
-    right: -60%;
-    background: rgba(255, 60, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    bottom: 50%;
-    right: 50%;
-    background: rgba(255, 100, 0, 0.8);
-    transform: scale(1.5) rotate(-45deg);
-  }
-  100% {
-    bottom: -60%;
-    right: -60%;
-    background: rgba(255, 60, 0, 0.6);
-    transform: scale(1) rotate(0deg);
-  }
-}
-
-.login-page .form span:nth-child(1) {
-  animation: fire1 4s infinite;
-  top: 0;
-  left: -50%;
-}
-
-.login-page .form span:nth-child(2) {
-  animation: fire2 4s infinite;
-  bottom: 0;
-  right: -50%;
-}
-
-.login-page .form span:nth-child(3) {
-  animation: fire3 4s infinite;
-  top: 0;
-  right: -50%;
-}
-
-.login-page .form span:nth-child(4) {
-  animation: fire4 4s infinite;
-  bottom: 0;
-  left: -50%;
+.signup-link a:hover {
+  color: #ff77a9;
 }

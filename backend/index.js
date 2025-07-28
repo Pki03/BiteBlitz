@@ -8,6 +8,7 @@ const port = 5001;
 // console.log("Mongo URI:", MONGOURL);
 
 
+const razorpayRoutes = require('./Routes/razorpay'); // or wherever you saved it
 
 
 const app = express();
@@ -30,6 +31,8 @@ app.get('/', (req, res) => {
 app.use('/api', require('./Routes/CreateUser'));
 app.use('/api', require('./Routes/DisplayData'));
 app.use('/api', require('./Routes/OrderData'));
+app.use('/api/razorpay', razorpayRoutes);
+
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

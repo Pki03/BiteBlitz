@@ -81,7 +81,7 @@ const Card = (props) => {
         </div>
 
         <div className="d-flex align-items-center justify-content-between mt-2">
-          <div className="h-1 fs-5 custom-price">💲{totalPrice}/-</div>
+          <div className="h-1 fs-5 custom-price">₹{totalPrice}/-</div>
 
           <button
             className="btn btn-success ms-2 custom-button"
