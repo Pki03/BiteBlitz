@@ -12,7 +12,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("http://localhost:5001/api/foodData", {
+      let response = await fetch("https://biteblitz.onrender.com/api/foodData", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

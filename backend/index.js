@@ -3,37 +3,43 @@ mongoDB();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 5001;
 
-// console.log("Mongo URI:", MONGOURL);
+// Use dynamic port provided by Render, fallback to 5001 locally
+const port = process.env.PORT || 5001;
 
-
-const razorpayRoutes = require('./Routes/razorpay'); // or wherever you saved it
-
+// Import Razorpay routes
+const razorpayRoutes = require('./Routes/razorpay');
 
 const app = express();
 
-// Enable CORS for all routes
-app.use(cors());
+// Enable CORS only for your frontend deployed on Vercel
+app.use(cors({
+    origin: "https://bite-blitz-coral.vercel.app", // <-- Replace with your Vercel frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 
-// Parse JSON and form data
+// Parse JSON and URL-encoded form data
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Define a specific CORS setup for the /createuser route
-app.options('/createuser', cors());
+// Optional: specific CORS for /createuser route if needed
+app.options('/createuser', cors({
+    origin: "https://bite-blitz-coral.vercel.app"
+}));
 
-// Define your routes
+// Test route
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hello World from Render backend!');
 });
 
+// Define your API routes
 app.use('/api', require('./Routes/CreateUser'));
 app.use('/api', require('./Routes/DisplayData'));
 app.use('/api', require('./Routes/OrderData'));
 app.use('/api/razorpay', razorpayRoutes);
 
-
+// Start server
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Backend running on port ${port}`);
 });

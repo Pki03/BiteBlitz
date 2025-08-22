@@ -12,7 +12,7 @@ export default function MyOrder() {
         }
 
         try {
-            const res = await fetch("http://localhost:5001/api/auth/myOrderData", {
+            const res = await fetch("https://biteblitz.onrender.com/api/auth/myOrderData", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

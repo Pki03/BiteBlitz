@@ -18,7 +18,7 @@ const Cart = () => {
     }
   }, [totalPrice]);
 
-  
+
   if (cartData.length === 0) {
     return (
       <div className='cart-container m-5 w-60 text-center text-danger fs-5'>
@@ -51,7 +51,7 @@ const Cart = () => {
     }
 
     try {
-      const res = await fetch('http://localhost:5001/api/razorpay/createOrder', {
+      const res = await fetch('https://biteblitz.onrender.com/api/razorpay/createOrder', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: Math.round(parseFloat(totalPrice) * 100) })  // Amount in paise and as an integer
@@ -75,7 +75,7 @@ const Cart = () => {
         handler: async function (response) {
           alert("Payment successful! ID: " + response.razorpay_payment_id);
 
-          const saveOrder = await fetch('http://localhost:5001/api/orderData', {
+          const saveOrder = await fetch('https://biteblitz.onrender.com/api/orderData', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

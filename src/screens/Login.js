@@ -14,7 +14,7 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5001/api/loginuser", {
+      const response = await fetch("https://biteblitz.onrender.com/api/loginuser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
