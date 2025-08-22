@@ -18,6 +18,7 @@ const Cart = () => {
     }
   }, [totalPrice]);
 
+  
   if (cartData.length === 0) {
     return (
       <div className='cart-container m-5 w-60 text-center text-danger fs-5'>
@@ -62,6 +63,8 @@ const Cart = () => {
         return;
       }
 
+
+  
       const options = {
         key: 'rzp_test_j7sIjjRln5bP50',  // ✅ Replace with env-based value in production
         amount: data.order.amount,
