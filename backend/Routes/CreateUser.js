@@ -6,73 +6,72 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const jwtSecret = process.env.JWT_SECRET || "thisisawebsitewhichismadebyPrateek";
 
+// ---------------- SIGNUP ----------------
 router.post("/createuser",
   body('email').isEmail(),
-  body('name', 'incorrect name given').isLength({ min: 5 }),
-  body('password', 'incorrect pwd').isLength({ min: 5 }),
+  body('name', 'Name must be at least 3 characters').isLength({ min: 3 }), // lowered min
+  body('password', 'Password must be at least 5 characters').isLength({ min: 5 }),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const securePassword = await bcrypt.hash(req.body.password, salt);
-
     try {
-      await User.create({
+      const salt = await bcrypt.genSalt(10);
+      const securePassword = await bcrypt.hash(req.body.password, salt);
+
+      const newUser = await User.create({
         name: req.body.name,
         password: securePassword,
         email: req.body.email,
         location: req.body.location,
       });
 
-      // Redirect to home page after successful user creation
-      res.json({ success: true, redirect: '/' });
+      // Generate JWT token for frontend
+      const data = { user: { id: newUser.id } };
+      const authToken = jwt.sign(data, jwtSecret);
+
+      res.json({ success: true, authToken });
     } catch (error) {
-      console.error(error);
-      res.json({ success: false, error: error.message });
+      console.error("Signup error:", error);
+      res.status(500).json({ success: false, error: error.message });
     }
   });
 
+// ---------------- LOGIN ----------------
 router.post("/loginuser",
   body('email').isEmail(),
-  body('password', 'incorrect pwd').isLength({ min: 5 }),
+  body('password', 'Password must be at least 5 characters').isLength({ min: 5 }),
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success: false, errors: errors.array() });
     }
 
-    let email = req.body.email;
+    const { email, password } = req.body;
     try {
-      let userData = await User.findOne({ email });
+      const userData = await User.findOne({ email });
       console.log("User Data:", userData);
 
       if (!userData) {
-        console.log("User not found");
-        return res.status(400).json({ errors: "Try logging in with correct data or create an account" });
+        return res.status(400).json({ success: false, errors: "Try logging in with correct data or create an account" });
       }
 
-      const isPasswordMatch = await bcrypt.compare(req.body.password, userData.password);
+      const isPasswordMatch = await bcrypt.compare(password, userData.password);
       console.log("Password Comparison Result:", isPasswordMatch);
 
       if (!isPasswordMatch) {
-        console.log("Incorrect password");
-        return res.status(400).json({ errors: "Try logging in with correct data or create an account" });
+        return res.status(400).json({ success: false, errors: "Try logging in with correct data or create an account" });
       }
 
-      const data = {
-        user: {
-          id: userData.id
-        }
-      }
+      const data = { user: { id: userData.id } };
       const authToken = jwt.sign(data, jwtSecret);
 
-      res.json({ success: true, authToken: authToken });
+      res.json({ success: true, authToken });
     } catch (error) {
-      console.error(error);
-      res.json({ success: false, error: error.message });
+      console.error("Login error:", error);
+      res.status(500).json({ success: false, error: error.message });
     }
   });
 
