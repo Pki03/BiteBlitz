@@ -11,10 +11,15 @@ export default function Signup() {
     location: "",
   });
 
+  // Dynamically set backend URL
+  const API_BASE = window.location.hostname.includes("vercel.app")
+    ? "https://biteblitz.onrender.com"
+    : "http://localhost:5001";
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch("http://localhost:5001/api/createuser", {
+      const response = await fetch(`${API_BASE}/api/createuser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
@@ -24,7 +29,9 @@ export default function Signup() {
       console.log(json);
 
       if (json.success) {
+        // Store auth token and email in localStorage
         localStorage.setItem("authToken", json.authToken);
+        localStorage.setItem("userEmail", credentials.email);
         navigate("/");
       } else {
         alert("Failed to create user. Please check your data.");
@@ -42,7 +49,6 @@ export default function Signup() {
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit} className="form">
-        {/* Fire-like decorative spans */}
         <span></span>
         <span></span>
         <span></span>

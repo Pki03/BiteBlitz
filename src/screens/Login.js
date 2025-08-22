@@ -8,13 +8,18 @@ export default function Login() {
     password: "",
   });
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+
+  // Dynamically set backend URL
+  const API_BASE = window.location.hostname.includes("vercel.app")
+    ? "https://biteblitz.onrender.com"
+    : "http://localhost:5001";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await fetch("https://biteblitz.onrender.com/api/loginuser", {
+      const response = await fetch(`${API_BASE}/api/loginuser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -27,6 +32,7 @@ export default function Login() {
       console.log(json);
 
       if (json.success) {
+        // Store user email and auth token
         localStorage.setItem("userEmail", credentials.email);
         localStorage.setItem("authToken", json.authToken);
         navigate("/");
@@ -46,33 +52,31 @@ export default function Login() {
   return (
     <div className="login-page">
       <form onSubmit={handleSubmit} className="form">
-  <div className="form-inner">
-    <button className="btn" type="submit">LOGIN</button>
-    <input
-      className="input"
-      type="text"
-      placeholder="Username"
-      name="email"
-      value={credentials.email}
-      onChange={onChange}
-    />
-    <input
-      className="input"
-      type="password"
-      placeholder="Password"
-      name="password"
-      value={credentials.password}
-      onChange={onChange}
-    />
-    <div className="signup-link">
-      <p>
-        Don’t have an account?{" "}
-        <Link to="/createuser">Sign Up</Link>
-      </p>
-    </div>
-  </div>
-</form>
-
+        <div className="form-inner">
+          <button className="btn" type="submit">LOGIN</button>
+          <input
+            className="input"
+            type="text"
+            placeholder="Username"
+            name="email"
+            value={credentials.email}
+            onChange={onChange}
+          />
+          <input
+            className="input"
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+          />
+          <div className="signup-link">
+            <p>
+              Don’t have an account? <Link to="/createuser">Sign Up</Link>
+            </p>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
