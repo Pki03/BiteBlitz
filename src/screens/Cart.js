@@ -7,17 +7,16 @@ const Cart = () => {
   const cartData = useCartState();
   const dispatch = useCartDispatch();
   const priceRef = useRef();
+
+  // Total price calculation
   const totalPrice = cartData.reduce((total, food) => {
     const foodPrice = parseFloat(food.price);
     return isNaN(foodPrice) ? total : total + foodPrice;
   }, 0).toFixed(2);
 
   useEffect(() => {
-    if (priceRef.current) {
-      priceRef.current.innerText = totalPrice;
-    }
+    if (priceRef.current) priceRef.current.innerText = totalPrice;
   }, [totalPrice]);
-
 
   if (cartData.length === 0) {
     return (
@@ -26,6 +25,11 @@ const Cart = () => {
       </div>
     );
   }
+
+  // Dynamically set backend URL
+  const API_BASE = window.location.hostname.includes("vercel.app")
+    ? "https://biteblitz.onrender.com" // Render backend URL
+    : "http://localhost:5001";
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -46,15 +50,16 @@ const Cart = () => {
 
     const userEmail = localStorage.getItem('userEmail');
     if (!userEmail) {
-      alert("User not logged in!");
+      alert("Please log in first!");
+      window.location.href = "/login"; // redirect to login
       return;
     }
 
     try {
-      const res = await fetch('https://biteblitz.onrender.com/api/razorpay/createOrder', {
+      const res = await fetch(`${API_BASE}/api/razorpay/createOrder`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: Math.round(parseFloat(totalPrice) * 100) })  // Amount in paise and as an integer
+        body: JSON.stringify({ amount: Math.round(parseFloat(totalPrice) * 100) }) 
       });
 
       const data = await res.json();
@@ -63,10 +68,8 @@ const Cart = () => {
         return;
       }
 
-
-  
       const options = {
-        key: 'rzp_test_j7sIjjRln5bP50',  // ✅ Replace with env-based value in production
+        key: 'rzp_test_j7sIjjRln5bP50',
         amount: data.order.amount,
         currency: data.order.currency,
         name: 'BiteBlitz',
@@ -75,7 +78,7 @@ const Cart = () => {
         handler: async function (response) {
           alert("Payment successful! ID: " + response.razorpay_payment_id);
 
-          const saveOrder = await fetch('https://biteblitz.onrender.com/api/orderData', {
+          const saveOrder = await fetch(`${API_BASE}/api/orderData`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -91,18 +94,9 @@ const Cart = () => {
             alert("Order saving failed after payment.");
           }
         },
-        prefill: {
-          email: userEmail,
-          contact: "9999999999"
-        },
-        theme: {
-          color: "#0d6efd"
-        },
-        modal: {
-          ondismiss: () => {
-            alert("Payment popup closed.");
-          }
-        }
+        prefill: { email: userEmail, contact: "9999999999" },
+        theme: { color: "#0d6efd" },
+        modal: { ondismiss: () => alert("Payment popup closed.") }
       };
 
       const razorpay = new window.Razorpay(options);
