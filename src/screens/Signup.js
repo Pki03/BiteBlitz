@@ -10,6 +10,7 @@ export default function Signup() {
     password: "",
     location: "",
   });
+  const [loading, setLoading] = useState(false);
 
   // Dynamically set backend URL
   const API_BASE = window.location.hostname.includes("vercel.app")
@@ -18,6 +19,7 @@ export default function Signup() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch(`${API_BASE}/api/createuser`, {
@@ -27,17 +29,21 @@ export default function Signup() {
       });
 
       const json = await response.json();
+      console.log("Signup Response:", json);
 
       if (json.success) {
         // Save email and auth token to localStorage
         localStorage.setItem("userEmail", credentials.email);
-        localStorage.setItem("authToken", json.authToken);
+        localStorage.setItem("authToken", json.authToken || ""); // fallback empty string
         navigate("/");
       } else {
         alert(json.error || "Failed to create user. Please check your data.");
       }
     } catch (error) {
+      console.error("Signup Error:", error);
       alert("Failed to fetch. Please check your network or backend.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,13 +54,17 @@ export default function Signup() {
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit} className="form">
+        {/* Fire-like decorative spans */}
         <span></span>
         <span></span>
         <span></span>
         <span></span>
 
         <div className="form-inner">
-          <button className="btn" type="submit">SignUp</button>
+          <button className="btn" type="submit" disabled={loading}>
+            {loading ? "Signing Up..." : "SignUp"}
+          </button>
+
           <input
             className="input"
             type="text"
@@ -87,6 +97,7 @@ export default function Signup() {
             value={credentials.location}
             onChange={onChange}
           />
+
           <div className="signup-link">
             <p>
               Already have an account? <Link to="/login">Login</Link>

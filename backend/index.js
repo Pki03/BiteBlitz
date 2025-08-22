@@ -12,28 +12,36 @@ const razorpayRoutes = require('./Routes/razorpay');
 
 const app = express();
 
-// Enable CORS only for your frontend deployed on Vercel
+// CORS setup
+const allowedOrigins = [
+  "https://bite-blitz-coral.vercel.app", // Vercel frontend
+  "http://localhost:3000"                // Local frontend
+];
+
 app.use(cors({
-    origin: "https://bite-blitz-coral.vercel.app", // <-- Replace with your Vercel frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+  origin: function(origin, callback) {
+    // allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = "The CORS policy for this site does not allow access from the specified Origin.";
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
 }));
 
 // Parse JSON and URL-encoded form data
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Optional: specific CORS for /createuser route if needed
-app.options('/createuser', cors({
-    origin: "https://bite-blitz-coral.vercel.app"
-}));
-
 // Test route
 app.get('/', (req, res) => {
     res.send('Hello World from Render backend!');
 });
 
-// Define your API routes
+// Define API routes
 app.use('/api', require('./Routes/CreateUser'));
 app.use('/api', require('./Routes/DisplayData'));
 app.use('/api', require('./Routes/OrderData'));
