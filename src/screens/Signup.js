@@ -11,27 +11,33 @@ export default function Signup() {
     location: "",
   });
 
+  // Dynamically set backend URL
+  const API_BASE = window.location.hostname.includes("vercel.app")
+    ? "https://biteblitz.onrender.com" // Render backend URL
+    : "http://localhost:5001";        // Local backend URL
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const response = await fetch("http://localhost:5001/api/createuser", {
+      const response = await fetch(`${API_BASE}/api/createuser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       });
 
       const json = await response.json();
-      console.log(json);
 
       if (json.success) {
+        // Save email and auth token to localStorage
+        localStorage.setItem("userEmail", credentials.email);
         localStorage.setItem("authToken", json.authToken);
         navigate("/");
       } else {
-        alert("Failed to create user. Please check your data.");
+        alert(json.error || "Failed to create user. Please check your data.");
       }
     } catch (error) {
-      console.error("Error during fetch:", error.message);
-      alert("Failed to fetch. Check console for details.");
+      alert("Failed to fetch. Please check your network or backend.");
     }
   };
 
@@ -42,7 +48,6 @@ export default function Signup() {
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit} className="form">
-        {/* Fire-like decorative spans */}
         <span></span>
         <span></span>
         <span></span>
